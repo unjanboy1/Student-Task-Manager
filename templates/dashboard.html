@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <link rel="stylesheet"
+      href="{{ url_for('static', filename='style.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+
+<h1>Welcome {{ username }}</h1>
+
+<a href="/logout">Logout</a>
+
+<hr>
+
+<h2>Add Task</h2>
+
+<form action="/add-task" method="POST">
+    <input type="text" name="title" required>
+    <button type="submit">Add</button>
+</form>
+
+<hr>
+
+<h2>Your Tasks</h2>
+
+{% for task in tasks %}
+
+<p>
+{% if task[3] == 1 %}
+✓ {{ task[2] }}
+{% else %}
+{{ task[2] }}
+{% endif %}
+</p>
+
+<a href="/complete-task/{{ task[0] }}">Complete</a>
+
+<a href="/edit-task/{{ task[0] }}">Edit</a>
+
+<a href="/delete-task/{{ task[0] }}">Delete</a>
+
+<hr>
+
+{% endfor %}
+
+</body>
+</html>
