@@ -39,7 +39,7 @@ body {
     background-repeat: no-repeat;
 }
 
-/* Dark overlay */
+
 body::before {
     content: '';
     position: fixed;
@@ -49,7 +49,7 @@ body::before {
     pointer-events: none;
 }
 
-/* Animated glow blobs */
+
 body::after {
     content: '';
     position: fixed;
@@ -69,7 +69,7 @@ body::after {
     100% { opacity: 1; transform: scale(0.97); }
 }
 
-/* Fine grid overlay */
+
 .grid-overlay {
     position: fixed;
     inset: 0;
@@ -82,7 +82,6 @@ body::after {
     mask-image: radial-gradient(ellipse 80% 80% at 50% 50%, black 10%, transparent 100%);
 }
 
-/* ─── PAGE LAYOUT ─────────────────────── */
 .workspace-wrapper {
     position: relative;
     z-index: 1;
