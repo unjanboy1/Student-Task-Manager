@@ -1,31 +1,29 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <title>Edit Task</title>
-    <link rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Edit Task | Student Workspace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="grid-overlay"></div>
 
-<h1>Edit Task</h1>
+    <div class="workspace-wrapper auth-form-layout">
+        <div class="app-brand">⚡ Edit Task</div>
+        <h1 class="hero-title">Modify <span class="accent">Record.</span></h1>
 
-<form action="/update-task/{{ task[0] }}" method="POST">
+        <form action="/update-task/{{ task[0] }}" method="POST">
+            <div class="input-group">
+                <label>Task Title</label>
+                <input type="text" name="title" value="{{ task[2] }}" required>
+            </div>
+            <button type="submit" style="width:100%; margin-top:8px;">Save Changes</button>
+        </form>
 
-    <input
-        type="text"
-        name="title"
-        value="{{ task[2] }}"
-        required>
-
-    <button type="submit">
-        Save Changes
-    </button>
-
-</form>
-
-<br>
-
-<a href="/dashboard">Back</a>
-
+        <p class="switch-footer-text" style="margin-top:20px;">
+            <a href="/dashboard" class="cancel-navigation">← Back to Dashboard</a>
+        </p>
+    </div>
 </body>
 </html>
