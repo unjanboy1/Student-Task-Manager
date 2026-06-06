@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Register | Student Task Manager</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
+</head>
+<body>
+    <div class="grid-overlay"></div>
+
+    <div class="workspace-wrapper auth-form-layout">
+        <div class="app-brand">⚡ Initialize Account</div>
+        <h1 class="hero-title">Create <span class="accent">Node.</span></h1>
+        <p class="hero-subtitle">Set up your credentials to start managing tasks and deadlines.</p>
+
+        <form method="POST">
+            <div class="input-group">
+                <label>Username</label>
+                <input type="text" name="username" placeholder="Choose a username" required>
+            </div>
+            <div class="input-group">
+                <label>Password</label>
+                <div style="position:relative;">
+                    <input type="password" name="password" id="regPass" placeholder="Create a secure password" required style="padding-right:48px;">
+                    <button type="button" onclick="togglePass('regPass', this)" style="
+                        position:absolute; right:14px; top:50%; transform:translateY(-50%);
+                        background:none; border:none; box-shadow:none; padding:0; margin:0;
+                        cursor:pointer; color:rgba(180,170,220,0.5); font-size:1.1rem;
+                        animation:none; width:auto; letter-spacing:0;
+                    ">👁</button>
+                </div>
+            </div>
+            <button type="submit" style="width:100%; margin-top:8px;">Deploy Credentials</button>
+        </form>
+
+        <p class="switch-footer-text">
+            Already have an account? <a href="/login">Sign in</a>
+        </p>
+    </div>
+
+    <script>
+        function togglePass(inputId, btn) {
+            const input = document.getElementById(inputId);
+            if (input.type === 'password') {
+                input.type = 'text';
+                btn.style.color = 'rgba(167,139,250,0.9)';
+            } else {
+                input.type = 'password';
+                btn.style.color = 'rgba(180,170,220,0.5)';
+            }
+        }
+    </script>
+</body>
+</html>

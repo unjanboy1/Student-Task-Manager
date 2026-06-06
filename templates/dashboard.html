@@ -1,48 +1,48 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-    <link rel="stylesheet"
-      href="{{ url_for('static', filename='style.css') }}">
-    <title>Dashboard</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Dashboard | Student Workspace</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename='style.css') }}">
 </head>
 <body>
+    <div class="grid-overlay"></div>
 
-<h1>Welcome {{ username }}</h1>
+    <div class="workspace-wrapper">
+        <div class="dashboard-navigation">
+            <div class="app-brand" style="margin:0;">⚡ {{ username.upper() }}</div>
+            <a href="/logout" class="logout-link">End Session</a>
+        </div>
 
-<a href="/logout">Logout</a>
+        <h1 class="hero-title">Your <span class="accent">Workspace.</span></h1>
+        <p class="hero-subtitle">Add study goals, track deadlines, and stay on top of your workload.</p>
 
-<hr>
+        <form action="/add-task" method="POST" class="add-task-row">
+            <input type="text" name="title" placeholder="Add an assignment, deadline or milestone…" required>
+            <button type="submit">Add Task</button>
+        </form>
 
-<h2>Add Task</h2>
+        <div class="section-label">Active Tasks</div>
 
-<form action="/add-task" method="POST">
-    <input type="text" name="title" required>
-    <button type="submit">Add</button>
-</form>
-
-<hr>
-
-<h2>Your Tasks</h2>
-
-{% for task in tasks %}
-
-<p>
-{% if task[3] == 1 %}
-✓ {{ task[2] }}
-{% else %}
-{{ task[2] }}
-{% endif %}
-</p>
-
-<a href="/complete-task/{{ task[0] }}">Complete</a>
-
-<a href="/edit-task/{{ task[0] }}">Edit</a>
-
-<a href="/delete-task/{{ task[0] }}">Delete</a>
-
-<hr>
-
-{% endfor %}
-
+        <div class="workspace-task-grid">
+            {% for task in tasks %}
+            <div class="task-card-row {% if task[3] == 1 %}task-complete-state{% endif %}">
+                <span class="task-string">
+                    {% if task[3] == 1 %}✓ {% endif %}{{ task[2] }}
+                </span>
+                <div class="control-link-group">
+                    {% if task[3] != 1 %}
+                    <a href="/complete-task/{{ task[0] }}" class="action-trigger trigger-done">Done</a>
+                    {% endif %}
+                    <a href="/edit-task/{{ task[0] }}" class="action-trigger trigger-edit">Edit</a>
+                    <a href="/delete-task/{{ task[0] }}" class="action-trigger trigger-remove">Delete</a>
+                </div>
+            </div>
+            {% else %}
+            <div class="empty-state">No tasks yet — add one above to get started.</div>
+            {% endfor %}
+        </div>
+    </div>
 </body>
 </html>
