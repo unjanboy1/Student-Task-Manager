@@ -1,7 +1,4 @@
 
-
-
-
 ## 📌 Student Task Manager (Flask + GitHub Collaboration Project)
 
 A full-stack beginner-friendly web application built using **Python Flask** and **SQLite**, designed to manage student tasks efficiently. This project is developed as a **team collaboration project** to practice real-world software development workflows including Git branching, pull requests, and feature-based development.
@@ -28,17 +25,6 @@ The system allows users to register, log in, and manage their daily tasks throug
 
 ---
 
-## 👥 Collaboration Workflow
-
-This project follows a real-world development structure:
-
-* `main` → Stable production-ready code
-* `zaib` → Authentication module (Login/Register/Logout)
-* `maryam` → Task management module (CRUD operations)
-
-Each feature is developed in separate branches and merged via pull requests.
-
----
 
 ## 📂 Project Goal
 
